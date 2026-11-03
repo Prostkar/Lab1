@@ -1,0 +1,22 @@
+using ConsoleApp1;
+
+namespace ConsoleApp1Test
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestSwapValues_Cyclic_Variant11()
+        {
+            int a = 4;
+            int b = 5;
+            int c = 6;
+
+            var result = ConsoleApp1.Program.SwapValues(a, b, c);
+
+            Assert.AreEqual(6, result.newA, "Значення A має дорівнювати 6");
+            Assert.AreEqual(4, result.newB, "Значення B має дорівнювати 4");
+            Assert.AreEqual(5, result.newC, "Значення C має дорівнювати 5");
+        }
+    }
+}
