@@ -1,0 +1,55 @@
+using System;
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+        public static (int newA, int newB, int newC) SwapValues(int a, int b, int c)
+        {
+            int tempA = a;
+
+            a = c;
+            c = b;
+            b = tempA;
+
+            return (a, b, c);
+        }
+
+        /// Допоміжний метод для безпечного введення цілого числа
+        private static int ReadIntegerInput(string variableName)
+        {
+            int result;
+            while (true)
+            {
+                Console.Write($"Введіть значення {variableName}: ");
+                string input = Console.ReadLine();
+
+                // Перевіряємо, чи можна перетворити введений рядок у число
+                if (int.TryParse(input, out result))
+                {
+                    return result;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Помилка! '{input}' не є цілим числом. Будь ласка, введіть число.");
+                Console.ResetColor();
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            int a = ReadIntegerInput("A");
+            int b = ReadIntegerInput("B");
+            int c = ReadIntegerInput("C");
+
+            var result = SwapValues(a, b, c);
+
+            Console.WriteLine($"\nРезультат після циклічного зсуву:");
+            Console.WriteLine($"A = {result.newA}, B = {result.newB}, C = {result.newC}");
+
+            Console.ReadLine();
+        }
+    }
+}
